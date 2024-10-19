@@ -3,17 +3,11 @@ from PIL import Image
 import google.generativeai as genai
 import os
 
-# Configure Gemini API key
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-
 def generate_regrade_request(exam_image, solution_image, rubric_text):
-    # Open images
     exam_img = Image.open(exam_image)
-    
-    # Choose a Gemini model
     model = genai.GenerativeModel("gemini-1.5-flash")
     
-    # Create prompt based on whether solution image is provided
     if solution_image:
         solution_img = Image.open(solution_image)
             # Create prompt
@@ -29,7 +23,6 @@ def generate_regrade_request(exam_image, solution_image, rubric_text):
         """
         response = model.generate_content([prompt, exam_img, solution_img])
     else:
-            # Create prompt
         prompt = f"""
         I have attached images of an exam that a student has filled out. I have also attached an image of the correct solutions to this question. I have attached the rubric at the bottom of this query. I would like you to act as a grader, and see if there are any mis-graded questions, or any points on the rubric that the student can argue for or ask for due to partial credit or grading errors. Only include major errors or obvious mishaps in the grading of the student's soluion, do not argue for points without a strong argument. If there are no errors, output "Your assignment has been graded correctly." Only include questions that you believe could warrant credit awarded back in your response. Additionally, please format your respone in LaTeX to deal with mathematical expressions being readable. Please format your response with new lines between item in the response in the format:
         Question Number,
@@ -44,7 +37,6 @@ def generate_regrade_request(exam_image, solution_image, rubric_text):
     
     return response.text.strip()
 
-# Streamlit UI
 st.title("Regrade Request Generator")
 
 st.header("Upload Exam and Solution Images")
@@ -56,7 +48,6 @@ rubric_text = st.text_area("Paste the rubric here")
 
 if st.button("Generate Regrade Request"):
     if exam_image and rubric_text:
-        # Generate regrade request
         regrade_request = generate_regrade_request(exam_image, solution_image, rubric_text)
         st.subheader("Regrade Request")
         st.write(regrade_request)
