@@ -1,0 +1,30 @@
+.reveal-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .reveal-button:hover {
+    background-color: #45a049;
+  }
+
+.l-contentWrapper {
+    background: radial-gradient(circle at 10% 20%, rgb(251, 222, 238) 15.6%, rgb(164, 142, 255) 70.3%);  
+}
+
+table {
+    background-color: transparent !important;
+}
+
+/* Optionally, remove background color for table cells as well */
+/* th, td {
+    background-color: transparent !important;
+} */
