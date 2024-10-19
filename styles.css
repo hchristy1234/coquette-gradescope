@@ -1,5 +1,5 @@
 .reveal-button {
-    background-color: #4CAF50;
+    background-color: #d199b7;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -13,11 +13,11 @@
   }
   
   .reveal-button:hover {
-    background-color: #45a049;
+    background-color: #b5829d;
   }
 
 .l-contentWrapper {
-    background: radial-gradient(circle at 10% 20%, rgb(251, 222, 238) 15.6%, rgb(164, 142, 255) 70.3%);  
+    background: radial-gradient(circle at 10% 20%, rgb(251, 222, 238) 15.6%, rgb(170, 179, 242) 70.3%);  
 }
 
 table {
