@@ -1,6 +1,6 @@
 const defaults = {
     shapes: ["star"],
-    colors: ["D49BC9", "E19AC1", "ED8EB6", "F08CB3", "DFA1C5", "fffcd1"],
+    colors: ["D49BC9", "E19AC1", "ED8EB6", "F08CB3", "DFA1C5", "fffcd2"],
   };
 // Function to hide all scores and add a button to reveal each one
 function hideScores() {
