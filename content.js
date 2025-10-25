@@ -37,7 +37,6 @@ function hideScores() {
 
 // Create draggable, collapsible color picker panel
 function addColorControlPanel() {
-  // Container
   const container = document.createElement("div");
   container.id = "colorPickerContainer";
   Object.assign(container.style, {
@@ -56,7 +55,7 @@ function addColorControlPanel() {
     cursor: "move",
   });
 
-  // Header with close (×) button
+  // Header with close button
   const header = document.createElement("div");
   header.style.display = "flex";
   header.style.justifyContent = "space-between";
@@ -71,19 +70,21 @@ function addColorControlPanel() {
 
   const closeBtn = document.createElement("button");
   closeBtn.textContent = "×";
-  closeBtn.style.border = "none";
-  closeBtn.style.background = "transparent";
-  closeBtn.style.cursor = "pointer";
-  closeBtn.style.fontSize = "18px";
-  closeBtn.style.lineHeight = "18px";
-  closeBtn.style.color = "#666";
-  closeBtn.style.fontWeight = "bold";
+  Object.assign(closeBtn.style, {
+    border: "none",
+    background: "transparent",
+    cursor: "pointer",
+    fontSize: "18px",
+    lineHeight: "18px",
+    color: "#666",
+    fontWeight: "bold",
+  });
 
   header.appendChild(title);
   header.appendChild(closeBtn);
   container.appendChild(header);
 
-  // Helper to create a labeled picker
+  // Helper to create labeled pickers
   function createLabeledPicker(id, labelText, defaultColor, storageKey, cssVar) {
     const wrapper = document.createElement("div");
     wrapper.style.display = "flex";
@@ -94,7 +95,7 @@ function addColorControlPanel() {
     label.textContent = labelText;
     label.style.fontSize = "12px";
     label.style.fontWeight = "500";
-    label.style.width = "80px";
+    label.style.width = "120px";
 
     const picker = document.createElement("input");
     picker.type = "color";
@@ -120,7 +121,7 @@ function addColorControlPanel() {
     return wrapper;
   }
 
-  // Build three pickers: left, right, and reveal button
+  // Build pickers
   const leftPicker = createLabeledPicker(
     "bgColorLeft",
     "Left Main",
@@ -135,17 +136,25 @@ function addColorControlPanel() {
     "userBgColorRight",
     "--bgColorRight"
   );
-  const buttonPicker = createLabeledPicker(
+  const revealPicker = createLabeledPicker(
     "revealBtnColor",
     "Reveal Button",
     "#d199b7",
     "userRevealBtnColor",
     "--revealBtnColor"
   );
+  const sidebarPicker = createLabeledPicker(
+    "sidebarBgColor",
+    "Sidebar Background",
+    "#f3c5df",
+    "userSidebarBgColor",
+    "--sidebarBgColor"
+  );
 
   container.appendChild(leftPicker);
   container.appendChild(rightPicker);
-  container.appendChild(buttonPicker);
+  container.appendChild(revealPicker);
+  container.appendChild(sidebarPicker);
   document.body.appendChild(container);
 
   // Collapsible logic
@@ -157,7 +166,6 @@ function addColorControlPanel() {
     right: "20px",
     width: "40px",
     height: "40px",
-    textAlign: "center",
     borderRadius: "50%",
     border: "none",
     background: "#fff",
@@ -173,7 +181,6 @@ function addColorControlPanel() {
     container.style.display = "none";
     reopenBtn.style.display = "block";
   });
-
   reopenBtn.addEventListener("click", () => {
     container.style.display = "flex";
     reopenBtn.style.display = "none";

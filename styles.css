@@ -1,11 +1,9 @@
+/* Reveal button */
 .reveal-button {
   background-color: var(--revealBtnColor, #d199b7);
   color: white;
   border: none;
   padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 14px;
   margin-top: 5px;
   cursor: pointer;
@@ -13,18 +11,35 @@
 }
 
 .reveal-button:hover {
-  filter: brightness(0.9);
+  background-color: var(--revealBtnColor, #d199b7) !important;
+  filter: none !important;
 }
 
-/* Use two CSS variables for the gradient colors */
+/* Page gradient */
 .l-contentWrapper {
   background: radial-gradient(
     circle at 10% 20%,
-    var(--bgColorLeft, rgb(243, 197, 223)) 15.6%,
-    var(--bgColorRight, rgb(191, 198, 251)) 70.3%
+    var(--bgColorLeft, #f3c5df) 15.6%,
+    var(--bgColorRight, #bfc6fb) 70.3%
   );
 }
 
+/* Sidebar / navbar background */
+.sidebar--content {
+  background-color: var(--sidebarBgColor, #f3c5df) !important;
+  transition: none !important;
+}
+
+/* Sidebar buttons inherit sidebar background by default */
+.sidebar--menuLink,
+.sidebar--menuAction,
+.sidebar--menuLink:hover,
+.sidebar--menuAction:hover {
+  background-color: var(--sidebarBgColor, #f3c5df) !important;
+  transition: none !important;
+}
+
+/* Other styles */
 table {
   background-color: transparent !important;
 }
