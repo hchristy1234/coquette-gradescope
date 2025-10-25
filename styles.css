@@ -1,30 +1,39 @@
 .reveal-button {
-    background-color: #d199b7;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin-top: 5px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .reveal-button:hover {
-    background-color: #b5829d;
-  }
+  background-color: var(--revealBtnColor, #d199b7);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
 
+.reveal-button:hover {
+  filter: brightness(0.9);
+}
+
+/* Use two CSS variables for the gradient colors */
 .l-contentWrapper {
-    background: radial-gradient(circle at 10% 20%, rgb(243, 197, 223) 15.6%, rgb(191, 198, 251) 70.3%);  
+  background: radial-gradient(
+    circle at 10% 20%,
+    var(--bgColorLeft, rgb(243, 197, 223)) 15.6%,
+    var(--bgColorRight, rgb(191, 198, 251)) 70.3%
+  );
 }
 
 table {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
-/* Optionally, remove background color for table cells as well */
-/* th, td {
-    background-color: transparent !important;
-} */
+#colorPickerContainer input[type="color"]::-webkit-color-swatch {
+  border-radius: 6px;
+  border: none;
+}
+
+#colorPickerContainer input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
