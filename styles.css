@@ -1,4 +1,3 @@
-/* Reveal button */
 .reveal-button {
   background-color: var(--revealBtnColor, #d199b7);
   color: white;
@@ -15,7 +14,7 @@
   filter: none !important;
 }
 
-/* Page gradient */
+/* main body */
 .l-contentWrapper {
   background: radial-gradient(
     circle at 10% 20%,
@@ -24,13 +23,12 @@
   );
 }
 
-/* Sidebar / navbar background */
+/* navbar */
 .sidebar--content {
   background-color: var(--sidebarBgColor, #f3c5df) !important;
   transition: none !important;
 }
 
-/* Sidebar buttons inherit sidebar background by default */
 .sidebar--menuLink,
 .sidebar--menuAction,
 .sidebar--menuLink:hover,
@@ -39,7 +37,6 @@
   transition: none !important;
 }
 
-/* Other styles */
 table {
   background-color: transparent !important;
 }
