@@ -143,6 +143,13 @@ function addColorControlPanel() {
           btn.style.color = getContrastColor(color);
         });
       }
+
+      if (id === "sidebarBgColor") {
+        document.querySelectorAll("[class^='sidebar--']:not(.sidebar--userProfile)").forEach((btn) => {
+          btn.style.backgroundColor = color;
+          btn.style.color = getContrastColor(color);
+        });
+      }
     });
 
     wrapper.appendChild(label);
@@ -283,10 +290,26 @@ function addColorControlPanel() {
       knob.style.left = turnDark ? "22px" : "2px";
       slider.style.backgroundColor = turnDark ? "#4CAF50" : "#ccc";
 
-      document.querySelectorAll("body *:not(#colorPickerContainer, #colorPickerContainer *, .reveal-button, .courseList--coursesForTerm *)").forEach((el) => {
-        el.style.color = turnDark ? "white" : "black";
+      document.querySelectorAll("body *").forEach((el) => {
+        // if inside these elements, don't change
+        if (
+            el.closest("#colorPickerContainer") ||
+            el.closest(".reveal-button") ||
+            el.closest(".courseList--coursesForTerm") || 
+            el.closest(".sideBar--userProfile") ||
+            el.closest(".onlineAssignment") || 
+            el.closest(".submissionOutline") ||
+            el.closest(".submissionOutlineHeader")
+        ) {
+            return;
+        }
+        if (
+            el.closest(".l-content")
+        ) {
+            el.style.color = turnDark ? "white" : "black";
+            return;
+        }
       });
-
     }
 
     applyDarkMode(toggle.checked);
@@ -302,6 +325,18 @@ function addColorControlPanel() {
   container.appendChild(textWhiteToggle);
 
   document.body.appendChild(container);
+
+  const savedRevealColor = localStorage.getItem("userRevealBtnColor") || "#ffffffff";
+  document.querySelectorAll(".reveal-button").forEach((btn) => {
+    btn.style.backgroundColor = savedRevealColor;
+    btn.style.color = getContrastColor(savedRevealColor);
+  });
+
+  const savedSidebarColor = localStorage.getItem("sidebarBgColor") || "#ffffffff";
+  document.querySelectorAll(".sidebar--content").forEach((btn) => {
+    btn.style.backgroundColor = savedSidebarColor;
+    btn.style.color = getContrastColor(savedSidebarColor);
+  });
 
   // collapsible
   const reopenBtn = document.createElement("button");
