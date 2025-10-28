@@ -299,7 +299,8 @@ function addColorControlPanel() {
             el.closest(".sideBar--userProfile") ||
             el.closest(".onlineAssignment") || 
             el.closest(".submissionOutline") ||
-            el.closest(".submissionOutlineHeader")
+            el.closest(".submissionOutlineHeader") ||
+            el.closest(".tiiBtn")
         ) {
             return;
         }
@@ -359,13 +360,25 @@ function addColorControlPanel() {
   });
   document.body.appendChild(reopenBtn);
 
+  const collapsed = localStorage.getItem("panelCollapsed") === "true";
+  if (collapsed) {
+    container.style.display = "none";
+    reopenBtn.style.display = "block";
+  } else {
+    container.style.display = "flex";
+    reopenBtn.style.display = "none";
+  }
+
+
   closeBtn.addEventListener("click", () => {
     container.style.display = "none";
     reopenBtn.style.display = "block";
+    localStorage.setItem("panelCollapsed", "true");
   });
   reopenBtn.addEventListener("click", () => {
     container.style.display = "flex";
     reopenBtn.style.display = "none";
+    localStorage.setItem("panelCollapsed", "false");
   });
 
   // draggable panel
